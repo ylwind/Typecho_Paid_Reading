@@ -30,9 +30,19 @@ class Payjs{
         curl_close($ch);
         return $rst;
     }
-    public function sign(array $attributes) {
-        ksort($attributes);
-        $sign = strtoupper(md5(urldecode(http_build_query($attributes)) . '&key=' . $this->key));
+    public function sign($params)
+    {
+        ksort($params);
+
+        $keyStr = '';
+        foreach ($params as $key => $val) {
+			if($key == "sign" || $key == "sign_type" || $val == "")continue;
+            $keyStr .= "$key=$val&";
+        }
+		$keyStr = trim($keyStr,'&');
+
+        $sign = md5($keyStr . $this->key);
+
         return $sign;
     }
 }
