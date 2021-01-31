@@ -20,7 +20,6 @@ if($action=='paysubmit'){
     $queryContent= $db->select()->from('table.contents')->where('cid = ?', $feecid);
     $rowContent = $db->fetchRow($queryContent);
 
-
     switch($feetype){
         case "alipay":
             $time=time();
@@ -78,7 +77,7 @@ if($action=='paysubmit'){
             $payjs = new Payjs($arr,$option->payjs_wxpay_mchid,$option->payjs_wxpay_key,$option->payjs_wxpay_notify_url);
             $res = $payjs->pay();
             $rst=json_decode($res,true);
-            if($rst["code"]==1){
+            if($rst["code"]==200){
                 $data = array(
                     'feeid'   =>  $arr['out_trade_no'],
                     'feecid'   =>  $feecid,
@@ -91,7 +90,7 @@ if($action=='paysubmit'){
                 );
                 $insert = $db->insert('table.teepay_fees')->rows($data);
                 $insertId = $db->query($insert);
-                $json=json_encode(array("status"=>"ok","type"=>"payjs","qrcode"=>$rst["code_url"],"feeid"=>$feeid));
+                $json=json_encode(array("status"=>"ok","type"=>"payjs","qrcode"=>dwz($rst["code_url"]),"feeid"=>$feeid));
                 echo $json;
                 exit;
 
@@ -109,7 +108,7 @@ if($action=='paysubmit'){
             $payjs = new Payjs($arr,$option->payjs_wxpay_mchid,$option->payjs_wxpay_key,$option->payjs_wxpay_notify_url);
             $res = $payjs->pay();
             $rst=json_decode($res,true);
-            if($rst["code"]==1){
+            if($rst["code"]==200){
                 $data = array(
                     'feeid'   =>  $arr['out_trade_no'],
                     'feecid'   =>  $feecid,
