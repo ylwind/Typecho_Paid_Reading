@@ -1,19 +1,19 @@
 <?php
 class Payjs{
-    private $url = 'https://cashier.5nm.top/qrcode.php';
-    private $key = '';// 填写通信密钥
-    private $mchid = '';// 特写商户号
+    private $url = 'https://cashier.ylwind.cn/qrcode.php';
+    private $key = '';
+    private $mchid = '';
     public function __construct($data=null,$mchid="",$key,$notify_url="") {
         $this->data = $data;
-		$this->mchid = $mchid;
-		$this->key = $key;
-		$this->notify_url = $notify_url;
+        $this->mchid = $mchid;
+        $this->key = $key;
+        $this->notify_url = $notify_url;
     }
     public function pay(){
         $data = $this->data;
         $data['type']='union';
         $data['pid'] = $this->mchid;
-		$data['notify_url'] = $this->notify_url;
+        $data['notify_url'] = $this->notify_url;
         $data['sign'] = $this->sign($data);
         $data['sign_type']='MD5';
         return $this->post($data, $this->url);
@@ -36,10 +36,10 @@ class Payjs{
 
         $keyStr = '';
         foreach ($params as $key => $val) {
-			if($key == "sign" || $key == "sign_type" || $val == "")continue;
+            if($key == "sign" || $key == "sign_type" || $val == "")continue;
             $keyStr .= "$key=$val&";
         }
-		$keyStr = trim($keyStr,'&');
+        $keyStr = trim($keyStr,'&');
 
         $sign = md5($keyStr . $this->key);
 

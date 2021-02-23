@@ -19,7 +19,6 @@ if($action=='paysubmit'){
 
     $queryContent= $db->select()->from('table.contents')->where('cid = ?', $feecid);
     $rowContent = $db->fetchRow($queryContent);
-
     switch($feetype){
         case "alipay":
             $time=time();
@@ -77,7 +76,7 @@ if($action=='paysubmit'){
             $payjs = new Payjs($arr,$option->payjs_wxpay_mchid,$option->payjs_wxpay_key,$option->payjs_wxpay_notify_url);
             $res = $payjs->pay();
             $rst=json_decode($res,true);
-            if($rst["code"]==200){
+            if($rst["status"]=='ok'){
                 $data = array(
                     'feeid'   =>  $arr['out_trade_no'],
                     'feecid'   =>  $feecid,
@@ -108,7 +107,7 @@ if($action=='paysubmit'){
             $payjs = new Payjs($arr,$option->payjs_wxpay_mchid,$option->payjs_wxpay_key,$option->payjs_wxpay_notify_url);
             $res = $payjs->pay();
             $rst=json_decode($res,true);
-            if($rst["code"]==200){
+            if($rst["status"]=='ok'){
                 $data = array(
                     'feeid'   =>  $arr['out_trade_no'],
                     'feecid'   =>  $feecid,

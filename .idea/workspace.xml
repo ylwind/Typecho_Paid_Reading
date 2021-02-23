@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f23509d5-9dbb-42e0-a8a0-59b902707f39" name="默认的" comment="" />
+    <list default="true" id="f23509d5-9dbb-42e0-a8a0-59b902707f39" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/payjs.php" beforeDir="false" afterPath="$PROJECT_DIR$/libs/payjs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pay.php" beforeDir="false" afterPath="$PROJECT_DIR$/pay.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wxpay_notify_url.php" beforeDir="false" afterPath="$PROJECT_DIR$/wxpay_notify_url.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +50,7 @@
       <workItem from="1611969057625" duration="1681000" />
       <workItem from="1612071021484" duration="626000" />
       <workItem from="1612072145848" duration="24000" />
+      <workItem from="1614084038714" duration="476000" />
     </task>
     <servers />
   </component>
